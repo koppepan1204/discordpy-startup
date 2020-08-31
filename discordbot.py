@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 
 import os
-
+import time
 import random  
 
 bot = commands.Bot(command_prefix="!")
@@ -61,16 +61,12 @@ async def ult(ctx):
         return
 
     channel = voice_state.channel
-
-    await channel.connect()
-    print("connected to:",channel.name)
-    
     voice_client = ctx.message.guild.voice_client
 
-    if not voice_client:
-        await ctx.send("Botはこのサーバーのボイスチャンネルに参加していません。")
-        return
-       
+    if channel != voice_client
+        await channel.connect()
+    print("connected to:",channel.name)
+ 
     rand = random.randint(1,4)
     
     if rand == 1:
@@ -83,6 +79,8 @@ async def ult(ctx):
         ffmpeg_audio_source = discord.FFmpegPCMAudio("brimstone.mp3")
 
     voice_client.play(ffmpeg_audio_source)
+    
+    time.sleep(8)
     
     await voice_client.disconnect()
 
