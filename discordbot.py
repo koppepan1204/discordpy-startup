@@ -58,12 +58,6 @@ async def play(ctx):
         await ctx.send("Botはこのサーバーのボイスチャンネルに参加していません。")
         return
 
-    if not ctx.message.attachments:
-        await ctx.send("ファイルが添付されていません。")
-        return
-
-    await ctx.message.attachments[0].save("phoenix.mp3")
-
     ffmpeg_audio_source = discord.FFmpegPCMAudio("phoenix.mp3")
     voice_client.play(ffmpeg_audio_source)
 
