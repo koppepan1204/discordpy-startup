@@ -23,9 +23,9 @@ print("Discord - Is loaded:")
 c = discord.opus.is_loaded()
 print(c)
 
-@bot.command(aliases=["connect","summon"]) #connectやsummonでも呼び出せる
-async def join(ctx):
-    """Botをボイスチャンネルに入室させます。"""
+@bot.command()
+async def ult(ctx):
+    """指定された音声ファイルを流します。"""
     voice_state = ctx.author.voice
 
     if (not voice_state) or (not voice_state.channel):
@@ -36,36 +36,6 @@ async def join(ctx):
 
     await channel.connect()
     print("connected to:",channel.name)
-
-
-@bot.command(aliases=["disconnect","bye"])
-async def leave(ctx):
-    """Botをボイスチャンネルから切断します。"""
-    voice_client = ctx.message.guild.voice_client
-
-    if not voice_client:
-        await ctx.send("Botはこのサーバーのボイスチャンネルに参加していません。")
-        return
-
-    await voice_client.disconnect()
-    await ctx.send("ボイスチャンネルから切断しました。")
-
-
-@bot.command()
-async def ult(ctx):
-    """指定された音声ファイルを流します。"""
-    """指定された音声ファイルを流します。"""
-    voice_state = ctx.author.voice
-
-    if (not voice_state) or (not voice_state.channel):
-        await ctx.send("先にボイスチャンネルに入っている必要があります。")
-        return
-
-    channel = voice_state.channel
-
-    if voice_state.is_connected() == false:
-        await channel.connect()
-        print("connected to:",channel.name)
  
     rand = random.randint(1,4)
     
