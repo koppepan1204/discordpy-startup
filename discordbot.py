@@ -64,6 +64,8 @@ async def ult(ctx):
 
     await channel.connect()
     print("connected to:",channel.name)
+    
+    voice_client = ctx.message.guild.voice_client
 
     if not voice_client:
         await ctx.send("Botはこのサーバーのボイスチャンネルに参加していません。")
