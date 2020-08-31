@@ -41,18 +41,22 @@ async def ult(ctx):
     
     if rand == 1:
         ffmpeg_audio_source = discord.FFmpegPCMAudio("phoenix.mp3")
+        sleeptime = 2
     elif rand == 2:
         ffmpeg_audio_source = discord.FFmpegPCMAudio("sage.mp3")
+        sleeptime = 2
     elif rand == 3:
         ffmpeg_audio_source = discord.FFmpegPCMAudio("sova.mp3")
+        sleeptime = 1
     elif rand == 4:
         ffmpeg_audio_source = discord.FFmpegPCMAudio("brimstone.mp3")
+        sleeptime = 7
         
     voice_client = ctx.message.guild.voice_client
 
     voice_client.play(ffmpeg_audio_source)
     
-    time.sleep(8)
+    time.sleep(sleeptime)
     
     await voice_client.disconnect()
 
