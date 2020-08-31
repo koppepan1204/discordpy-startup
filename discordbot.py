@@ -84,6 +84,6 @@ async def ult(ctx):
 
     voice_client.play(ffmpeg_audio_source)
     
-    await voice_client.disconnect()
+    # await voice_client.disconnect()
 
 bot.run(token)
