@@ -41,13 +41,13 @@ async def ult(ctx):
     
     if rand == 1:
         ffmpeg_audio_source = discord.FFmpegPCMAudio("phoenix.mp3")
-        sleeptime = 2
+        sleeptime = 3
     elif rand == 2:
         ffmpeg_audio_source = discord.FFmpegPCMAudio("sage.mp3")
-        sleeptime = 2
+        sleeptime = 3
     elif rand == 3:
         ffmpeg_audio_source = discord.FFmpegPCMAudio("sova.mp3")
-        sleeptime = 1
+        sleeptime = 2
     elif rand == 4:
         ffmpeg_audio_source = discord.FFmpegPCMAudio("brimstone.mp3")
         sleeptime = 7
