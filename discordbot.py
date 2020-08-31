@@ -54,6 +54,7 @@ async def leave(ctx):
 @bot.command()
 async def ult(ctx):
     """指定された音声ファイルを流します。"""
+    """指定された音声ファイルを流します。"""
     voice_state = ctx.author.voice
 
     if (not voice_state) or (not voice_state.channel):
