@@ -64,9 +64,9 @@ async def ult(ctx):
     channel = voice_state.channel
     voice_client = ctx.message.guild.voice_client
 
-    if channel != voice_client
+    if channel != voice_client:
         await channel.connect()
-    print("connected to:",channel.name)
+        print("connected to:",channel.name)
  
     rand = random.randint(1,4)
     
