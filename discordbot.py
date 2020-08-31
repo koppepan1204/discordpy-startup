@@ -63,7 +63,7 @@ async def ult(ctx):
 
     channel = voice_state.channel
 
-    if channel.is_connected() == false:
+    if voice_state.is_connected() == false:
         await channel.connect()
         print("connected to:",channel.name)
  
