@@ -7,7 +7,7 @@ bot = commands.Bot(command_prefix="$")
 token = os.environ['DISCORD_BOT_TOKEN']
 
 if not discord.opus.is_loaded():
-    discord.opus.load_opus("opus")
+    discord.opus.load_opus('opus')
 
 @bot.command(aliases=["connect","summon"]) #connectやsummonでも呼び出せる
 async def join(ctx):
