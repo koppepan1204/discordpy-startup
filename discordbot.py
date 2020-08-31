@@ -62,9 +62,8 @@ async def ult(ctx):
         return
 
     channel = voice_state.channel
-    voice_client = ctx.message.guild.voice_client
 
-    if channel != voice_client:
+    if channel.is_connected() == false:
         await channel.connect()
         print("connected to:",channel.name)
  
@@ -78,6 +77,8 @@ async def ult(ctx):
         ffmpeg_audio_source = discord.FFmpegPCMAudio("sova.mp3")
     elif rand == 4:
         ffmpeg_audio_source = discord.FFmpegPCMAudio("brimstone.mp3")
+        
+    voice_client = ctx.message.guild.voice_client
 
     voice_client.play(ffmpeg_audio_source)
     
