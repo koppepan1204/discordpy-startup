@@ -3,7 +3,9 @@ from discord.ext import commands
 
 import os
 
-bot = commands.Bot(command_prefix="$")
+import random  
+
+bot = commands.Bot(command_prefix="!")
 token = os.environ['DISCORD_BOT_TOKEN']
 
 import ctypes
@@ -50,17 +52,36 @@ async def leave(ctx):
 
 
 @bot.command()
-async def play(ctx):
+async def ult(ctx):
     """指定された音声ファイルを流します。"""
-    voice_client = ctx.message.guild.voice_client
+    voice_state = ctx.author.voice
+
+    if (not voice_state) or (not voice_state.channel):
+        await ctx.send("先にボイスチャンネルに入っている必要があります。")
+        return
+
+    channel = voice_state.channel
+
+    await channel.connect()
+    print("connected to:",channel.name)
 
     if not voice_client:
         await ctx.send("Botはこのサーバーのボイスチャンネルに参加していません。")
         return
+       
+    rand = random.randint(1,4)
+    
+    if rand == 1:
+        ffmpeg_audio_source = discord.FFmpegPCMAudio("phoenix.mp3")
+    elif rand == 2:
+        ffmpeg_audio_source = discord.FFmpegPCMAudio("sage.mp3")
+    elif rand == 3:
+        ffmpeg_audio_source = discord.FFmpegPCMAudio("sova.mp3")
+    elif rand == 4:
+        ffmpeg_audio_source = discord.FFmpegPCMAudio("brimstone.mp3")
 
-    ffmpeg_audio_source = discord.FFmpegPCMAudio("phoenix.mp3")
     voice_client.play(ffmpeg_audio_source)
-
-    await ctx.send("再生しました。")
+    
+    await voice_client.disconnect()
 
 bot.run(token)
