@@ -23,9 +23,13 @@ print("Discord - Is loaded:")
 c = discord.opus.is_loaded()
 print(c)
 
+@client.event
+async def on_ready():
+    print("booted")
+    await client.change_presence(activity=discord.Game(name="!ult", type=1))
+
 @bot.command()
 async def ult(ctx):
-    """指定された音声ファイルを流します。"""
     voice_state = ctx.author.voice
 
     if (not voice_state) or (not voice_state.channel):
@@ -37,7 +41,7 @@ async def ult(ctx):
     await channel.connect()
     print("connected to:",channel.name)
  
-    rand = random.randint(1,4)
+    rand = random.randint(1,7)
     
     if rand == 1:
         ffmpeg_audio_source = discord.FFmpegPCMAudio("phoenix.mp3")
@@ -51,7 +55,16 @@ async def ult(ctx):
     elif rand == 4:
         ffmpeg_audio_source = discord.FFmpegPCMAudio("brimstone.mp3")
         sleeptime = 7
-        
+    elif rand == 5:
+        ffmpeg_audio_source = discord.FFmpegPCMAudio("raze.mp3")
+        sleeptime = 5
+    elif rand == 6:
+        ffmpeg_audio_source = discord.FFmpegPCMAudio("breach.mp3")
+        sleeptime = 5
+    elif rand == 7:
+        ffmpeg_audio_source = discord.FFmpegPCMAudio("reyna.mp3")
+        sleeptime = 7
+    
     voice_client = ctx.message.guild.voice_client
 
     voice_client.play(ffmpeg_audio_source)
