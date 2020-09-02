@@ -23,10 +23,10 @@ print("Discord - Is loaded:")
 c = discord.opus.is_loaded()
 print(c)
 
-@client.event
+@bot.event
 async def on_ready():
     print("booted")
-    await client.change_presence(activity=discord.Game(name="!ult", type=1))
+    await bot.change_presence(activity=discord.Game(name="!ult"))
 
 @bot.command()
 async def ult(ctx):
